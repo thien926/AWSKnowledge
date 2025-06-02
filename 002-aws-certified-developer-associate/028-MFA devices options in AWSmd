@@ -1,0 +1,31 @@
+## Các tùy chọn thiết bị MFA trong AWS
+
+### 1. Virtual MFA Device (Thiết bị MFA ảo)
+- **Google Authenticator (chỉ trên điện thoại)**  
+  - Sinh mã OTP (một lần) theo chuẩn TOTP.  
+- **Authy (chỉ trên điện thoại)**  
+  - Tương tự Google Authenticator, có thêm tính năng sao lưu và đồng bộ nhiều thiết bị.  
+- **Lưu ý:** Hỗ trợ nhiều token (tài khoản) trên cùng một ứng dụng.
+
+### 2. Universal 2nd Factor (U2F) Security Key (Khóa bảo mật U2F)
+- **YubiKey của Yubico (bên thứ ba)**  
+  - Dùng chuẩn FIDO U2F, cắm trực tiếp vào cổng USB (hoặc qua NFC trên một số model).  
+- **Lưu ý:** Một khóa có thể đăng ký cho nhiều tài khoản Root và IAM.
+
+### 3. Hardware Key Fob MFA Device (Thiết bị Key Fob phần cứng)
+- **Cung cấp bởi Gemalto (bên thứ ba)**  
+  - Thiết bị cầm tay, màn hình LCD hiển thị mã OTP theo khoảng thời gian định sẵn.  
+- **Đặc điểm:** Không cần điện thoại, hoạt động độc lập.
+
+### 4. Hardware Key Fob MFA Device for AWS GovCloud (US)
+- **Cung cấp bởi SurePassID (bên thứ ba)**  
+  - Tương tự Key Fob thông thường nhưng được chứng nhận cho khu vực AWS GovCloud (US).  
+- **Sử dụng:** Dành riêng cho khách hàng AWS GovCloud, tuân thủ thêm các yêu cầu bảo mật của chính phủ Mỹ.
+
+---
+
+**Tóm lại:**  
+- *Virtual MFA* phù hợp với người dùng di động, dễ triển khai và quản lý nhiều token.  
+- *U2F Security Key* (YubiKey) mang lại độ an toàn cao, thao tác “cắm – chạm” nhanh gọn.  
+- *Hardware Key Fob* là lựa chọn độc lập, không phụ thuộc điện thoại.  
+- Phiên bản cho GovCloud đáp ứng tiêu chuẩn bảo mật đặc thù của chính phủ Mỹ.
